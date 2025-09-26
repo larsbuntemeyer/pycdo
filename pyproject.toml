@@ -3,12 +3,12 @@ requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "science-project"
+name = "pycdo"
 version = "0.1.0"
 dynamic = ["dependencies"]
 
 [tool.setuptools]
-packages = ["science_project"]
+packages = ["pycdo"]
 
 [tool.setuptools.dynamic]
 dependencies = {file = ["requirements.txt"]}
