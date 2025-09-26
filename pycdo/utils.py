@@ -1,4 +1,3 @@
-
 import subprocess
 import re
 import pandas as pd
@@ -23,7 +22,7 @@ def execute(command, return_type="stdout", decode=True, verbose=False):
         return output.stdout.decode("utf-8")
 
 
-def run(operator=None, inputs=None, options=None, verbose=True):
+def run(operator=None, inputs=None, output=None, options=None, verbose=False):
     if options is None:
         options = []
     elif isinstance(options, str):
@@ -36,8 +35,12 @@ def run(operator=None, inputs=None, options=None, verbose=True):
         inputs = []
     elif isinstance(inputs, str):
         inputs = [inputs]
+    if output is None:
+        output = []
+    elif isinstance(output, str):
+        output = [output]
 
-    command = ["cdo"] + options + operator + inputs
+    command = ["cdo"] + options + operator + inputs + output
     return execute(command, verbose=verbose)
 
 
@@ -74,4 +77,3 @@ def parse_cdo_operator_listing(text: str) -> pd.DataFrame:
 
 def parse_operator_help():
     pass
-
